@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useAppDispatch } from '../../app/hooks';
 import { Monster } from '../../models/interfaces/monster.interface';
 import { setSelectedMonster } from '../../reducers/monsters/monsters.actions';
+import { setRandomMonster } from '../../reducers/monsters/monsters.actions.extended';
 import {
   Image,
   ListTitle,
@@ -14,9 +15,13 @@ import {
 
 type MonstersListProps = {
   monsters: Monster[];
+  clearWinnerText?: () => void;
 };
 
-const MonstersList: React.FC<MonstersListProps> = ({ monsters }) => {
+const MonstersList: React.FC<MonstersListProps> = ({
+  monsters,
+  clearWinnerText,
+}) => {
   const dispatch = useAppDispatch();
 
   const [selectedMonsterId, setSelectedMonsterId] = useState<string | null>(
@@ -27,6 +32,18 @@ const MonstersList: React.FC<MonstersListProps> = ({ monsters }) => {
     const value = selectedMonsterId === monster.id ? null : monster.id;
     setSelectedMonsterId(value);
     dispatch(setSelectedMonster(!value ? null : monster));
+    clearWinnerText && clearWinnerText();
+
+    const random = Math.round(Math.random() * (monsters.length - 2));
+    dispatch(
+      setRandomMonster(
+        !value
+          ? null
+          : monsters.filter(monsterItem => monsterItem.id !== monster?.id)[
+              random
+            ],
+      ),
+    );
   };
 
   return (

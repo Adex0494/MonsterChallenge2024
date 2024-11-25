@@ -21,6 +21,34 @@ export const BattleMonsterCard = styled(Card, {
   justifyContent: centralized ? 'center' : 'auto',
 }));
 
+export const Image = styled.img(() => ({
+  width: '283px',
+  height: '178px',
+  filter: 'drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.25))',
+  borderRadius: '7px',
+  marginBottom: '14px',
+}));
+
+export const BattleMonsterTitleSmall = styled(Typography)(() => ({
+  fontFamily: 'Roboto',
+  fontStyle: 'normal',
+  fontWeight: '400',
+  fontSize: '22px',
+  lineHeight: '26px',
+  color: colors.black,
+  marginBottom: '6px',
+}));
+
+export const SkillTitle = styled(Typography)(() => ({
+  fontFamily: 'Roboto',
+  fontStyle: 'normal',
+  fontWeight: '400',
+  fontSize: '12px',
+  lineHeight: '14px',
+  color: colors.black,
+  marginBottom: '5px',
+}));
+
 export const BattleMonsterTitle = styled(Typography)(() => ({
   fontFamily: 'Roboto',
   fontStyle: 'normal',
@@ -28,6 +56,13 @@ export const BattleMonsterTitle = styled(Typography)(() => ({
   fontSize: '36px',
   lineHeight: '42px',
   color: colors.black,
+}));
+
+export const Divider = styled.div(() => ({
+  width: '283px',
+  height: '1px',
+  background: 'rgba(0,0,0, 0.1)',
+  marginBottom: '11px',
 }));
 
 export const ProgressBar = styled(LinearProgress)(() => ({
@@ -40,4 +75,5 @@ export const ProgressBar = styled(LinearProgress)(() => ({
     borderRadius: 15,
     backgroundColor: colors.progressColor,
   },
+  marginBottom: '16px',
 }));
